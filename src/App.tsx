@@ -1,11 +1,20 @@
 import React from 'react';
+import Login from './pages/Login';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ContactsPage from './pages/ContactsPage';
+import Layout from './components/Layout/Layout';
 
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <Layout>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+        </Routes>
+      </Router>
+    </Layout>
   );
 }
 
