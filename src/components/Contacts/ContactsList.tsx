@@ -1,4 +1,5 @@
-import { Contact } from "./Contacts";
+import { Contact } from "../../store/contactsSlice";
+import ContactsListElement from "./ContactsListElement";
 
 interface ContactsListProps {
     contacts: Contact[]
@@ -8,20 +9,10 @@ function ContactsList({contacts} : ContactsListProps) {
     return (
         <div>
             <ul>
-            {contacts.map(({id, name, phone}) => (
-                <li key={id}>
-                    <div 
-                    className="name">{name}</div>
-                    <div 
-                    className="phone">{phone}</div>
-                    <div className="actions">
-                        <button 
-                        className="remove">Удалить</button>
-                        <button 
-                        className="change">Изменить</button>
-                    </div>
-                </li>
-                ))}
+            {contacts.map(
+                contact => 
+                <ContactsListElement key={contact.id} contact={contact}/>
+            )}
             </ul>
         </div>
     )

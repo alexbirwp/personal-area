@@ -1,47 +1,34 @@
 import { useState } from "react";
 import ContactsList from "./ContactsList";
 import ContactsSearch from "./ContactsSearch";
+import { RootState } from '../../store/store';
+import { useSelector } from "react-redux";
 
 
-export interface Contact {
-    id: number;
-    name: string;
-    phone: string;
-}
 
-const DUMMY_ARRAY : Contact[] = [
-    {
-        id: 1,
-        name: 'alex',
-        phone: '+799999999'
-    },
-    {
-        id: 2,
-        name: 'balex',
-        phone: '+799999999'
-    },
-    {
-        id: 3,
-        name: 'salex',
-        phone: '+799999999'
-    }
-];
+
 
 function Contacts() {
-    const [contacts, setContacts] = useState(DUMMY_ARRAY);
+    const initialContacts = useSelector((state: RootState) => state.contacts.contacts);
+    const [searchValue, setSearcValue] = useState('');
 
-    const onSearch = (search : string) => {
-        setContacts(
-            DUMMY_ARRAY.filter(({name, phone}) => 
-                name.includes(search) || phone.includes(search)
-            )
-        )
+    const onSearch = (search: string) => setSearcValue(search);
+
+    let filteredContacts = initialContacts;
+
+    if (searchValue.trim()) {
+        filteredContacts = initialContacts.filter(({name, phone}) => {
+            const lowerSearch = searchValue.toLowerCase();
+            const lowerName = name.toLowerCase();
+
+            return lowerName.includes(lowerSearch) || phone.includes(searchValue)
+        })
     }
 
     return (
         <div>
             <ContactsSearch onSearch={onSearch}/>
-            <ContactsList contacts={contacts}/>
+            <ContactsList contacts={filteredContacts}/>
         </div>
     );
 }
