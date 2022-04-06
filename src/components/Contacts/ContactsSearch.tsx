@@ -16,8 +16,8 @@ function ContactsSearch({onSearch} : contactsSearchProps) {
     }
 
     return (
-        <form>
-            <label htmlFor="contacts_search">Найти</label>
+        <form className="search-form">
+            <label htmlFor="contacts_search">Найти:</label>
             <input 
             onChange={onSearchHandler}
             value={searchValue}

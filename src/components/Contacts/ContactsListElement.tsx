@@ -40,10 +40,8 @@ function ContactsListElement(
         setIsChanging(false);
     }
     
-
-
-    if(!isChanging) return (
-        <li key={id}>
+    const elementView = (
+        <div className="list-element">
             <div 
             className="name">{name}</div>
             <div 
@@ -54,32 +52,39 @@ function ContactsListElement(
                 <button 
                 onClick={() => setIsChanging(true)}>Изменить</button>
             </div>
-        </li>
-    )
+        </div>
+    );
+
+    const elementChange = (
+        <form 
+        className="list-element"
+        onSubmit={submitChangesHandler}>
+            <div 
+            className="name">
+                <input 
+                onChange={nameChangeHandler}
+                type="text" 
+                value={newName}/>
+            </div>
+            <div 
+            className="phone">
+                <input 
+                onChange={phoneChangeHandler}
+                type="text" 
+                value={newPhone}/>
+            </div>
+            <div className="actions">
+                <button type="button" onClick={cancelChangeHandler}>Отмена</button>
+                <button type="submit">Применить</button>
+            </div>
+        </form>
+    );
+
 
     return (
-        <li key={id}>
-            <form onSubmit={submitChangesHandler}>
-                <div 
-                className="name">
-                    <input 
-                    onChange={nameChangeHandler}
-                    type="text" 
-                    value={newName}/>
-                </div>
-                <div 
-                className="phone">
-                    <input 
-                    onChange={phoneChangeHandler}
-                    type="text" 
-                    value={newPhone}/>
-                </div>
-                <div className="actions">
-                    <button type="button" onClick={cancelChangeHandler}>Отмена</button>
-                    <button type="submit">Применить</button>
-                </div>
-            </form>
-        </li>
+    <li>
+        {isChanging ? elementChange : elementView}
+    </li>
     )
 }
 

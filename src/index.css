@@ -1,0 +1,155 @@
+:root {
+    --main-bg: #1A1A1D;
+    --main-text: #fff;
+    --alt-color: #4E4E50;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--main-text);
+}
+
+body {
+    background-color: var(--main-bg);
+}
+header {
+    background-color: var(--alt-color);
+}
+.hader-wrapper {
+    width: 100%;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .site-name {
+    color: var(--main-text);
+    font-weight: 600;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid var(--main-text);
+    color: var(--main-text);
+    font-weight: 600;
+    cursor: pointer;
+}
+button:hover {
+    background-color: var(--main-text);
+    color: var(--alt-color);
+}
+.wrapper {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--alt-color);
+    min-height: calc(100vh - 100px);
+}
+.wrapper.login-wrapper {
+    min-height: unset;
+}
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.search-form label {
+    display: block;
+}
+input {
+    display: block;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--main-text);
+    outline: none;
+    flex-grow: 1;
+}
+.search-form input {
+    padding: 10px 15px;
+}
+
+.contact-list {
+    list-style: none;
+}
+.contact-list li {
+    margin-bottom: 15px;
+}
+.contact-list .list-element {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    border: 1px solid var(--main-text);
+    border-radius: 5px;
+}
+
+.contact-list .list-element :is(.name, .phone) {
+    width: 20%;
+}
+.contact-list 
+.list-element :is(.name, .phone) input {
+    padding: 10px 0;
+}
+.contact-list .list-element .phone {
+    margin-right: auto;
+}
+.contact-list .list-element .actions {
+    display: flex;
+    gap: 10px
+}
+
+@media screen and (max-width: 780px) {
+    .contact-list .list-element {
+        flex-direction: column;
+    }
+    .contact-list .list-element :is(.name, .phone) {
+        width: 100%;
+    }
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.adding-wrapper button {
+    width: 100%;
+}
+.adding-wrapper form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.fom-action button {
+    margin-bottom: 15px;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.login-header button {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+}
+.login-header button.active {
+    border-color: var(--main-text);
+}

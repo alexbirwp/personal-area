@@ -26,7 +26,7 @@ function Contacts() {
     }
 
     return (
-        <div>
+        <div className="wrapper">
             <ContactsSearch onSearch={onSearch}/>
             <ContactsList contacts={filteredContacts}/>
         </div>

@@ -1,5 +1,5 @@
-import Login from './pages/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import LoginPage from './pages/LoginPage';
 import ContactsPage from './pages/ContactsPage';
 import Layout from './components/Layout/Layout';
 
@@ -9,8 +9,12 @@ function App() {
     <Layout>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route 
+          path="/" 
+          element={<LoginPage />} />
+          <Route 
+          path="/contacts" 
+          element={<ContactsPage />} />
         </Routes>
       </Router>
     </Layout>
