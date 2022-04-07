@@ -7,13 +7,30 @@ export interface User {
 
 const initialState = {
     isAuth: false,
-    token: ''
+    user: ''
 }
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {}
+    reducers: {
+        login: (state, action: PayloadAction<User>) => {
+            // магия авторизации
+            state.isAuth = true;
+            state.user = action.payload.login;
+        },
+        logout: (state) => {
+            state.isAuth = initialState.isAuth;
+            state.user = initialState.user;
+        },
+        register: (state, action: PayloadAction<User>) => {
+            //магия регистрации
+            state.isAuth = true;
+            state.user = action.payload.login;
+        }
+    }
 })
+
+export const {login, logout, register} = userSlice.actions;
 
 export default userSlice.reducer;
