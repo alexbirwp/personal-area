@@ -2,6 +2,7 @@ import { Contact } from "../../store/contactsSlice";
 import { remove, change } from "../../store/contactsSlice";
 import { useDispatch } from "react-redux";
 import React, { useState } from "react";
+import useInput from "../../hooks/useInput";
 
 interface ContactsListElementProps {
     contact: Contact
@@ -12,8 +13,10 @@ function ContactsListElement(
 ) {
     const {id, name, phone} = contact;
     const [isChanging, setIsChanging] = useState(false);
-    const [newName, setNewName] = useState(name);
-    const [newPhone, setNewPhone] = useState(phone);
+
+    const [newNameInput, newName, setNewName] = useInput(name, 'string');
+    const [newPhoneInput, newPhone, setNewPhone] = useInput(phone, 'string');
+
     const dispatch = useDispatch();
 
     const cancelChangeHandler = () => {
@@ -22,12 +25,6 @@ function ContactsListElement(
         setIsChanging(false);
     }
 
-    const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewName(event.target.value)
-    }
-    const phoneChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewPhone(event.target.value)
-    }
     const submitChangesHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const nameValue = newName.trim();
@@ -61,17 +58,11 @@ function ContactsListElement(
         onSubmit={submitChangesHandler}>
             <div 
             className="name">
-                <input 
-                onChange={nameChangeHandler}
-                type="text" 
-                value={newName}/>
+                {newNameInput}
             </div>
             <div 
             className="phone">
-                <input 
-                onChange={phoneChangeHandler}
-                type="text" 
-                value={newPhone}/>
+                {newPhoneInput}
             </div>
             <div className="actions">
                 <button type="button" onClick={cancelChangeHandler}>Отмена</button>

@@ -153,3 +153,15 @@ input {
 .login-header button.active {
     border-color: var(--main-text);
 }
+
+.login-form {
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--main-text);
+}
+.login-form button {
+    display: block;
+    width: 100%;
+}
