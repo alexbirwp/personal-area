@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import LoginForm, { loginAction } from "../components/Login/LoginForm";
-import { login, register } from "../store/userSlice";
+import { asyncLoginUser, asyncRegisterUser } from "../store/user-actions";
 
 
 function LoginPage() {
@@ -10,15 +10,15 @@ function LoginPage() {
     const actionName = isLoging ? 'Войти' : 'Зарегистрироваться';
     const action : loginAction = (UserLogin, UserPassword) => {
         if (isLoging) {
-            dispatch(login({
+            asyncLoginUser({
                 login: UserLogin,
                 password: UserPassword
-            }))
+            })(dispatch)
         } else {
-            dispatch(register({
+            asyncRegisterUser({
                 login: UserLogin,
                 password: UserPassword
-            }))
+            })(dispatch)
         }
     }
     return (

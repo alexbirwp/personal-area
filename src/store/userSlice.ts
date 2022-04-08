@@ -14,19 +14,17 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        login: (state, action: PayloadAction<User>) => {
-            // магия авторизации
+        login: (state, action: PayloadAction<string>) => {
             state.isAuth = true;
-            state.user = action.payload.login;
+            state.user = action.payload;
         },
         logout: (state) => {
             state.isAuth = initialState.isAuth;
             state.user = initialState.user;
         },
-        register: (state, action: PayloadAction<User>) => {
-            //магия регистрации
+        register: (state, action: PayloadAction<string>) => {
             state.isAuth = true;
-            state.user = action.payload.login;
+            state.user = action.payload;
         }
     }
 })
