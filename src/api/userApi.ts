@@ -34,7 +34,8 @@ const addUser = async (user: User) => {
 export const loginUser = async (user: User) => {
     const foundedUser = await findUser(user);
     if(foundedUser !== undefined && foundedUser.password === user.password) return {
-        login: foundedUser.login
+        login: foundedUser.login,
+        id: foundedUser.id
     };
     
     return null;
@@ -45,7 +46,12 @@ export const registerUser = async (user: User) => {
     if (foundedUser !== undefined) return null;
 
     await addUser(user);
+    const registeredUser = await findUser(user)
+
+    if (registeredUser === undefined) return null;
+
     return {
-        login: user.login
+        login: registeredUser.login,
+        id: registeredUser.id,
     };
 }

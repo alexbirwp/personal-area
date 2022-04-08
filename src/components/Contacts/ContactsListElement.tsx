@@ -1,8 +1,8 @@
 import { Contact } from "../../store/contactsSlice";
-import { remove, change } from "../../store/contactsSlice";
 import { useDispatch } from "react-redux";
 import React, { useState } from "react";
 import useInput from "../../hooks/useInput";
+import { changeContact, removeContact } from "../../store/contacts-actions";
 
 interface ContactsListElementProps {
     contact: Contact
@@ -29,11 +29,11 @@ function ContactsListElement(
         event.preventDefault();
         const nameValue = newName.trim();
         const phoneValue = newPhone.trim();
-        dispatch(change({
+        changeContact({
             ...contact,
             name: nameValue,
             phone: phoneValue,
-        }));
+        })(dispatch)
         setIsChanging(false);
     }
     
@@ -45,7 +45,7 @@ function ContactsListElement(
             className="phone">{phone}</div>
             <div className="actions">
                 <button 
-                onClick={() => dispatch(remove(id))}>Удалить</button>
+                onClick={() => removeContact(id)(dispatch)}>Удалить</button>
                 <button 
                 onClick={() => setIsChanging(true)}>Изменить</button>
             </div>

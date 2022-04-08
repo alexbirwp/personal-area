@@ -4,6 +4,44 @@
       "id": 1,
       "login": "alex",
       "password": "123"
+    },
+    {
+      "login": "alex22",
+      "password": "12345",
+      "id": 2
+    },
+    {
+      "login": "alex3222",
+      "password": "passwoed",
+      "id": 3
+    }
+  ],
+  "users_contacts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "contacts": [
+        {
+          "name": "alex",
+          "phone": "123",
+          "id": 1649439503492
+        },
+        {
+          "name": "vales22",
+          "phone": "123452",
+          "id": 1649439510995
+        }
+      ]
+    },
+    {
+      "userId": 2,
+      "contacts": [],
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "contacts": [],
+      "id": 3
     }
   ]
 }

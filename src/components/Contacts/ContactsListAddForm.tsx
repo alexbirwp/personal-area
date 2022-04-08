@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import useInput from "../../hooks/useInput";
-import { add } from "../../store/contactsSlice";
+import { addContact } from "../../store/contacts-actions";
 
 interface ContactsListAddFormProps {
     onAbortAdding: () => void;
@@ -18,11 +18,11 @@ function ContactsListAddForm(
         event.preventDefault();
         const nameValue = name.trim();
         const phoneValue = phone.trim();
-        dispatch(add({
+        addContact({
             name: nameValue,
             phone: phoneValue,
             id: Date.now()
-        }));
+        })(dispatch);
         setName('');
         setPhone('');
         onAbortAdding();

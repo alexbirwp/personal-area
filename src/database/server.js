@@ -5,7 +5,6 @@ const router = jsonServer
 const server = jsonServer.create();
 const middlewares = jsonServer.defaults();
 const PORT = 5000;
-console.log(middlewares);
 
 
 server.use(middlewares);
