@@ -10,8 +10,10 @@ console.log(middlewares);
 
 server.use(middlewares);
 server.use(router);
+server.use(jsonServer.bodyParser)
 server.listen(PORT, () => {
     console.log('JSON Server is running');
 })
+
 
 

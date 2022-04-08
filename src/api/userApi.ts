@@ -21,9 +21,12 @@ const findUser = async (user: User) => {
     );
 }
 
-const addUser = async (user: dbUser) => {
+const addUser = async (user: User) => {
     await fetch(URL_USERS, {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(user)
     })
 }
@@ -41,12 +44,8 @@ export const registerUser = async (user: User) => {
     const foundedUser = await findUser(user);
     if (foundedUser !== undefined) return null;
 
-    const newUser : dbUser = {
-        id: Date.now(),
-        ...user
-    };
-    await addUser(newUser);
+    await addUser(user);
     return {
-        login: newUser.login
+        login: user.login
     };
 }
