@@ -4,12 +4,12 @@
 
 Установить модули приложения
 
-## `npm install`
+ `npm install`
 
 Запустить моковый сервер командой 
 
-## `node ./src/database/server.js`
+ `node ./src/database/server.js`
 
 Затем зупустить само реакт приложение 
 
-## `npm start`
+ `npm start`
